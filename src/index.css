@@ -9,7 +9,7 @@ a.active{
 }
 
 .bouncing{
-    animation: bounceRing 1.5s ease-in-out infinite;
+    animation: bounceRing 1s ease-in-out infinite;
 }
 
 @keyframes bounceRing {

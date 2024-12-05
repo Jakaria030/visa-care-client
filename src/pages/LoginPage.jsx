@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const LoginPage = () => {
@@ -9,6 +9,9 @@ const LoginPage = () => {
     const [logingError, setLoginError] = useState("");
 
     const navigate = useNavigate();
+    const {state} = useLocation();
+
+    // console.log(state);
 
     const handleLoginForm = (e) => {
         e.preventDefault();
@@ -16,6 +19,7 @@ const LoginPage = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+
 
         // const user = {email, password};
         // console.log(user);
@@ -26,7 +30,7 @@ const LoginPage = () => {
             // console.log(result);
             setUser(result.user);
             form.reset();
-            navigate('/');
+            navigate(`${state ? state : '/'}`);
         }).catch(err => {
             // console.log(err);
             setLoginError("Enter valid credential.");
@@ -38,7 +42,7 @@ const LoginPage = () => {
         signInWithGoogle()
         .then(resutl => {
             setUser(resutl.user);
-            navigate('/');
+            navigate(`${state ? state : '/'}`);
         }).catch(err => {
             setLoginError("Email is not valid.");
         })
@@ -77,7 +81,7 @@ const LoginPage = () => {
                 <div className='form-control mx-4 sm:mx-8'>
                     <button onClick={continueWithGoogle} className='flex items-center gap-3 justify-center py-2 rounded-md bg-[#003366] text-[#F2F2F2] active:scale-95'><FaGoogle /> <span>Continue with Google</span></button>
 
-                    <p className='label-text text-center mt-3'>Don't have an account? <Link to='/registerPage' className='underline hover:text-[#FF6F3F] font-bold duration-150 transition-colors'>Register</Link></p>
+                    <p className='label-text text-center mt-3'>Don't have an account? <Link to='/registerPage' state={state} className='underline hover:text-[#FF6F3F] font-bold duration-150 transition-colors'>Register</Link></p>
                 </div>
             </div>
         </section>

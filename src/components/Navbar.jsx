@@ -8,17 +8,22 @@ import { FaUserCircle } from 'react-icons/fa';
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const [isHover, setIsHover] = useState(false);
-    const {pathname} = useLocation();
+    const {pathname, state} = useLocation();
 
     const links = <>
         <NavLink to='/' className={`hover:text-[#FF6F3F] transition-colors duration-150 ${pathname === '/homePage' && 'text-[#FF6F3F]'}`}>Home</NavLink>
         <NavLink to='/allVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>All visas</NavLink>
         <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>Add visa</NavLink>
-        <NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My added visas</NavLink>
-        <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My visa applications</NavLink>
+
+        {
+            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My added visas</NavLink>
+            <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My visa applications</NavLink></>
+        }
+
+        
         
         {
-            user ? <button onClick={signOutUser} className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden text-left'>Logout</button> : <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</NavLink>
+            (!user) && <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</NavLink>
             <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</NavLink></div>
         }
     </>;
@@ -56,14 +61,14 @@ const Navbar = () => {
                     </div>
 
                     {/* right part */}
-                    <div className='relative navbar-end hidden sm:flex'>
+                    <div className='relative navbar-end'>
 
                         {
-                            user ? <div onMouseEnter={() => setIsHover(true)} className='size-12 rounded-full ring-2 ring-[#FF6F3F] flex items-center justify-center cursor-pointer'>
+                            user ? <div onMouseEnter={() => setIsHover(true)} className='size-10 sm:size-12 rounded-full ring-2 ring-[#FF6F3F] flex items-center justify-center cursor-pointer'>
                                 {user?.photoURL !== "undefined"  ? <img className='size-full rounded-full p-1' src={user?.photoURL} alt="User" /> : <FaUserCircle className='text-5xl p-1'/>}
-                            </div> : <div className='flex items-center justify-end gap-3 cursor-pointer'>
+                            </div> : <div className='sm:flex items-center justify-end gap-3 cursor-pointer hidden'>
                                 <NavLink to='/loginPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
-                                <NavLink to='/registerPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
+                                <NavLink to='/registerPage' state={state}><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
                             </div>
                         }
 

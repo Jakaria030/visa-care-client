@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const RegisterPage = () => {
@@ -8,7 +8,9 @@ const RegisterPage = () => {
     const {user, setUser, signUpUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
     const navigate = useNavigate();
+    const {state} = useLocation();
 
+    // console.log(state);
     // console.log(user);
 
     // form submit
@@ -52,7 +54,7 @@ const RegisterPage = () => {
             // update user profile
             updateUserProfile({displayName: name, photoURL: photoURL})
             .then(() => {
-                navigate('/');
+                navigate(`${state ? state : '/'}`);
             }).catch(err => {
                 setRegisterError(err.message);
             })
@@ -66,7 +68,7 @@ const RegisterPage = () => {
         signInWithGoogle()
         .then(resutl => {
             setUser(resutl.user);
-            navigate('/');
+            navigate(`${state ? state : '/'}`);
         }).catch(err => {
             setRegisterError("Email is not valid.");
         })
