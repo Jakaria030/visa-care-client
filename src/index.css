@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bouncing{
+    animation: bounceRing 1.5s ease-in-out infinite;
+}
+
+@keyframes bounceRing {
+    0%, 100%{
+        transform: scale(1);
+    }
+    50%{
+      transform: scale(1.2);
+
+    }
+
+}
+  

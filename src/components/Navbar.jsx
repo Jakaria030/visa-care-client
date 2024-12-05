@@ -1,8 +1,14 @@
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../provider/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
+    const [isHover, setIsHover] = useState(false);
+
 
     const links = <>
         <NavLink to='/' className='hover:text-[#FF6F3F] transition-colors duration-150'>Home</NavLink>
@@ -48,9 +54,26 @@ const Navbar = () => {
                     </div>
 
                     {/* right part */}
-                    <div className='hidden sm:flex navbar-end items-center justify-end gap-3'>
-                        <NavLink to='/loginPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
-                        <NavLink to='/registerPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
+                    <div className='relative navbar-end hidden sm:flex'>
+
+                        {
+                            user ? <div onMouseEnter={() => setIsHover(true)} className='size-12 rounded-full ring-2 ring-[#FF6F3F] flex items-center justify-center cursor-pointer'>
+                                {user?.photoURL !== "undefined"  ? <img className='size-full rounded-full p-1' src={user?.photoURL} alt="User" /> : <FaUserCircle className='text-5xl p-1'/>}
+                            </div> : <div className='flex items-center justify-end gap-3 cursor-pointer'>
+                                <NavLink to='/loginPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
+                                <NavLink to='/registerPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
+                            </div>
+                        }
+
+                        {
+                            isHover && <div onMouseLeave={() => setIsHover(false)} className='absolute top-[70px] flex flex-col items-center gap-2 bg-[#003366] w-40 rounded-md p-2'>
+                                <p>{user?.displayName}</p>
+                                <button onClick={() => {
+                                    signOutUser();
+                                    setIsHover(false);
+                                }} className='px-4 py-1 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Logout</button>
+                            </div>
+                        }
                     </div>
                 </div>
             </section>
