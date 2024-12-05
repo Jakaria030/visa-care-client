@@ -35,7 +35,7 @@ const Navbar = () => {
                         <Link to='/' className='inline-block'>
                             <div className='flex items-center gap-3'>
                                 <img className='size-10 sm:size-12' src={logo} alt="Logo" />
-                                <a className='text-xl text-[#F2F2F2] font-poppins font-bold'><span>Visa</span><span className='text-[#FF6F3F]'>Care</span></a>
+                                <p className='text-xl text-[#F2F2F2] font-poppins font-bold'><span>Visa</span><span className='text-[#FF6F3F]'>Care</span></p>
                             </div>
                         </Link>
                     </div>
