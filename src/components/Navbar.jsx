@@ -50,7 +50,7 @@ const Navbar = () => {
                     {/* right part */}
                     <div className='hidden sm:flex navbar-end items-center justify-end gap-3'>
                         <NavLink><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
-                        <NavLink><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
+                        <NavLink to='/registerPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
                     </div>
                 </div>
             </section>

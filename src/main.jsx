@@ -9,6 +9,7 @@ import AllVisaPage from './pages/AllVisaPage';
 import MyAddedVisaPage from './pages/MyAddedVisaPage';
 import MyVisaApplicationPage from './pages/MyVisaApplicationPage';
 import ErrorPage from './pages/ErrorPage';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         {
           path: '/myVisaApplicationPage',
           element: <MyVisaApplicationPage></MyVisaApplicationPage>,
+        },
+        {
+          path: '/registerPage',
+          element: <RegisterPage></RegisterPage>,
         },
       ]
     },
