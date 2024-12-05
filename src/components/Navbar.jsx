@@ -11,8 +11,8 @@ const Navbar = () => {
         <NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My added visas</NavLink>
         <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My visa applications</NavLink>
         
-        <NavLink className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</NavLink>
-        <NavLink className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</NavLink>
+        <Link to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</Link>
+        <Link to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</Link>
     </>;
 
     return (
@@ -49,7 +49,7 @@ const Navbar = () => {
 
                     {/* right part */}
                     <div className='hidden sm:flex navbar-end items-center justify-end gap-3'>
-                        <NavLink><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
+                        <NavLink to='/loginPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
                         <NavLink to='/registerPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
                     </div>
                 </div>

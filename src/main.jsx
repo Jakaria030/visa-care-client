@@ -10,6 +10,7 @@ import MyAddedVisaPage from './pages/MyAddedVisaPage';
 import MyVisaApplicationPage from './pages/MyVisaApplicationPage';
 import ErrorPage from './pages/ErrorPage';
 import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           path: '/registerPage',
           element: <RegisterPage></RegisterPage>,
         },
+        {
+          path: '/loginPage',
+          element: <LoginPage></LoginPage>,
+        }
       ]
     },
     {
