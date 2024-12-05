@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+a.active{
+    color: #FF6F3F;
+}
+
 .bouncing{
     animation: bounceRing 1.5s ease-in-out infinite;
 }
@@ -15,6 +20,4 @@
       transform: scale(1.2);
 
     }
-
 }
-  

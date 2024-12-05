@@ -1,5 +1,5 @@
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
@@ -8,17 +8,19 @@ import { FaUserCircle } from 'react-icons/fa';
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const [isHover, setIsHover] = useState(false);
-
+    const {pathname} = useLocation();
 
     const links = <>
-        <NavLink to='/' className='hover:text-[#FF6F3F] transition-colors duration-150'>Home</NavLink>
+        <NavLink to='/' className={`hover:text-[#FF6F3F] transition-colors duration-150 ${pathname === '/homePage' && 'text-[#FF6F3F]'}`}>Home</NavLink>
         <NavLink to='/allVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>All visas</NavLink>
         <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>Add visa</NavLink>
         <NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My added visas</NavLink>
         <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My visa applications</NavLink>
         
-        <Link to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</Link>
-        <Link to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</Link>
+        {
+            user ? <button onClick={signOutUser} className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden text-left'>Logout</button> : <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</NavLink>
+            <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</NavLink></div>
+        }
     </>;
 
     return (
@@ -33,7 +35,7 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex={0}
-                                className='menu menu-md dropdown-content rounded-box z-[1] mt-5 w-60 space-y-1 p-2 shadow bg-[#003366] font-inter'>
+                                className='menu menu-md dropdown-content rounded-box z-[1] mt-5 w-60 space-y-1 px-3 py-4 shadow bg-[#003366] font-inter'>
                                 {links}
                             </ul>
                         </div>
