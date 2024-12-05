@@ -16,7 +16,7 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className='bg-[#003366] text-[#F2F2F2] sticky top-0'>
+        <div className='bg-[#003366] text-[#F2F2F2] sticky top-0 z-50'>
             <section className='max-w-8xl mx-auto px-5'>
                 <div className='navbar mx-0 px-0 py-5'>
                     {/* left part */}
