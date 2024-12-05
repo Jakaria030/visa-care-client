@@ -16,11 +16,11 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className='bg-[#003366] text-[#F2F2F2]'>
+        <div className='bg-[#003366] text-[#F2F2F2] sticky top-0'>
             <section className='max-w-8xl mx-auto px-5'>
-                <div className='navbar px-0 py-5'>
+                <div className='navbar mx-0 px-0 py-5'>
                     {/* left part */}
-                    <div className='navbar-start space-x-3'>
+                    <div className='navbar-start space-x-3 lg:space-x-0'>
                         <div className='dropdown'>
                             <div tabIndex={0} role='button' className='lg:hidden'>
                                 <GiHamburgerMenu className='text-2xl'/>
@@ -32,9 +32,11 @@ const Navbar = () => {
                             </ul>
                         </div>
 
-                        <Link to="/" className='flex items-center gap-3'>
-                            <img className='size-10 sm:size-12' src={logo} alt="Logo" />
-                            <a className='text-xl text-[#F2F2F2] font-poppins font-bold'><span>Visa</span><span className='text-[#FF6F3F]'>Care</span></a>
+                        <Link to='/' className='inline-block'>
+                            <div className='flex items-center gap-3'>
+                                <img className='size-10 sm:size-12' src={logo} alt="Logo" />
+                                <a className='text-xl text-[#F2F2F2] font-poppins font-bold'><span>Visa</span><span className='text-[#FF6F3F]'>Care</span></a>
+                            </div>
                         </Link>
                     </div>
 
