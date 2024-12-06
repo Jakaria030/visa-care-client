@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import VisaCard from "../components/VisaCard";
 
+
 const AllVisaPage = () => {
     const allVisas = useLoaderData();
     // console.log(allVisas);

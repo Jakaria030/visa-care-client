@@ -9,6 +9,7 @@ import ErrorPage from '../pages/ErrorPage';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import PrivateRoute from './PrivateRoute';
+import VisaDetails from '../components/VisaDetails';
 
 const root_dir = 'http://localhost:5000';
 
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
           path: '/allVisaPage',
           element: <AllVisaPage></AllVisaPage>,
           loader: () => fetch(`${root_dir}/visas`)
+        },
+        {
+          path: '/visaDetails/:id',
+          element: <VisaDetails></VisaDetails>,
+          loader: ({params}) => fetch(`${root_dir}/visas/${params.id}`)
         },
         {
             path: '/addVisaPage',

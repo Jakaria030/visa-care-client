@@ -22,17 +22,17 @@ const AddVisaPage = () => {
         const description = form.description.value;
 
         // checkbox values
-        const checkboxValues = [];
+        const requiredDocuments = [];
         if (form.validPassport.checked) {
-            checkboxValues.push(form.validPassport.value);
+            requiredDocuments.push(form.validPassport.value);
         }
         if (form.visaForm.checked) {
-            checkboxValues.push(form.visaForm.value);
+            requiredDocuments.push(form.visaForm.value);
         }
         if (form.recentPicture.checked) {
-            checkboxValues.push(form.recentPicture.value);
+            requiredDocuments.push(form.recentPicture.value);
         }
-        // console.log(checkboxValues);
+        // console.log(requiredDocuments);
 
         // Author info 
         const authName = user.displayName;
@@ -49,7 +49,7 @@ const AddVisaPage = () => {
             applicationMethod,
             validity,
             description,
-            checkboxValues,
+            requiredDocuments,
             authName,
             authEmail
         };
@@ -65,7 +65,7 @@ const AddVisaPage = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.acknowledged){
                 form.reset();
                 Swal.fire({
