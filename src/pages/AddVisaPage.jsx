@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddVisaPage = () => {
+    const {user, root_dir} = useContext(AuthContext);
 
     const handleAddVisaForm = (e) => {
         e.preventDefault();
@@ -11,8 +15,8 @@ const AddVisaPage = () => {
         const countryName = form.countryName.value;
         const visaType = form.visaType.value;
         const processingTime = form.processingTime.value;
-        const ageRestriction = form.ageRestriction.value;
-        const visaFee = form.visaFee.value;
+        const ageRestriction = parseInt(form.ageRestriction.value);
+        const visaFee = parseInt(form.visaFee.value);
         const applicationMethod = form.applicationMethod.value;
         const validity = form.validity.value;
         const description = form.description.value;
@@ -30,6 +34,10 @@ const AddVisaPage = () => {
         }
         // console.log(checkboxValues);
 
+        // Author info 
+        const authName = user.displayName;
+        const authEmail = user.email;
+
         const visaFormData = {
             countryImage,
             countryFlag,
@@ -41,11 +49,48 @@ const AddVisaPage = () => {
             applicationMethod,
             validity,
             description,
-            checkboxValues
+            checkboxValues,
+            authName,
+            authEmail
         };
         // console.log(visaFormData);
 
-
+        // data send to the server side
+        fetch(`${root_dir}/visas`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(visaFormData)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                form.reset();
+                Swal.fire({
+                    icon: "success",
+                    title: "Great! Your visa has been added successfully.",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Failed to add your visa. Please try again.",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        })
+        .catch(err => {
+            Swal.fire({
+                icon: "error",
+                title: err.message,
+                showConfirmButton: false,
+                timer: 2000
+            });
+        })
     };
 
     return (

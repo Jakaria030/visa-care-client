@@ -5,6 +5,8 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+    const root_dir = 'http://localhost:5000';
+    
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -60,6 +62,7 @@ const AuthProvider = ({ children }) => {
         setUser,
         signInWithGoogle,
         loading,
+        root_dir,
     };
 
     return (
