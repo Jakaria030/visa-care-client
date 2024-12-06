@@ -51,7 +51,7 @@ const LoginPage = () => {
     return (
         <section className='max-w-8xl mx-auto content-center px-5 min-h-[60vh] font-inter'>
             <div className='card w-full max-w-lg border-2 my-5 mx-auto py-5'>
-            <h2 className='text-2xl sm:text-3xl font-semibold mx-4 sm:mx-8 text-center'>Login Form</h2>
+            <h2 className='text-2xl sm:text-3xl font-semibold font-poppins mx-4 sm:mx-8 text-center'>Login Form</h2>
                 <form onSubmit={handleLoginForm} className='card-body px-4 sm:px-8 pb-5'>
                     <div className='form-control'>
                         <label className='label'>
