@@ -10,6 +10,8 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import PrivateRoute from './PrivateRoute';
 
+const root_dir = 'http://localhost:5000';
+
 const router = createBrowserRouter([
     {
       path: '/',
@@ -26,6 +28,7 @@ const router = createBrowserRouter([
         {
           path: '/allVisaPage',
           element: <AllVisaPage></AllVisaPage>,
+          loader: () => fetch(`${root_dir}/visas`)
         },
         {
             path: '/addVisaPage',
