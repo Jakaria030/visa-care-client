@@ -29,7 +29,6 @@ const router = createBrowserRouter([
         {
           path: '/allVisaPage',
           element: <AllVisaPage></AllVisaPage>,
-          loader: () => fetch(`${root_dir}/visas`)
         },
         {
           path: '/visaDetails/:id',
