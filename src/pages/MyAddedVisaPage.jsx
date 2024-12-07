@@ -2,12 +2,15 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import MyAddedVisa from "../components/MyAddedVisa";
 import Swal from "sweetalert2";
+import LoadingPage from "./LoadingPage";
+import NoDataFound from "../components/NoDataFound";
 
 const MyAddedVisaPage = () => {
     const [myAddedVisas, setMyAddedVisas] = useState([]);
     const {user, root_dir} = useContext(AuthContext);
     const closeModalRef = useRef(null);
     const [updatedVisa, setUpdatedVisa] = useState({})
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(`${root_dir}/visas?email=${user.email}`, {
@@ -19,6 +22,7 @@ const MyAddedVisaPage = () => {
         .then(res => res.json())
         .then(data => {
             setMyAddedVisas(data);
+            setLoading(false);
         });
     }, [myAddedVisas, setMyAddedVisas])
 
@@ -167,16 +171,18 @@ const MyAddedVisaPage = () => {
 
     return (
         <section className='max-w-8xl mx-auto px-5 py-10'>
-            <div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
             {
-                myAddedVisas.map(myAddedVisa => <MyAddedVisa
-                    key={myAddedVisa._id}
-                    myAddedVisa={myAddedVisa}
-                    handleDeleteVisa={handleDeleteVisa}
-                    handleShowModal={handleShowModal}
-                ></MyAddedVisa>)
+                loading ? (<LoadingPage />) : myAddedVisas.length > 0 ? (<div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+                {
+                    myAddedVisas.map(myAddedVisa => <MyAddedVisa
+                        key={myAddedVisa._id}
+                        myAddedVisa={myAddedVisa}
+                        handleDeleteVisa={handleDeleteVisa}
+                        handleShowModal={handleShowModal}
+                    ></MyAddedVisa>)
+                }
+                </div>) : (<NoDataFound />)
             }
-            </div>
 
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <dialog id="update_modal" className="modal modal-middle">

@@ -24,7 +24,7 @@ const LatestVisas = () => {
     return (
         <section className="max-w-8xl mx-auto px-5 my-10">
             <div className="my-8 sm:my-10 flex items-center justify-center">
-                <h2 className="heading-text text-3xl font-poppins font-semibold"> <span className="text-[#003366]">Latest</span> <span className="text-[#FF6F3F]">Visa</span> </h2>
+                <h2 className="text-3xl font-poppins font-semibold"> <span className="text-[#003366]">Latest</span> <span className="text-[#FF6F3F]">Visa</span> </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {

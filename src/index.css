@@ -21,24 +21,3 @@ a.active{
 
     }
 }
-
-.heading-text {
-    position: relative;
-}
-
-.heading-text::before,
-.heading-text::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 45%;
-    height: 2px; 
-    background-color: #003366; 
-    transform: translateY(-50%);
-}
-.heading-text::before {
-    left: -50%; 
-}
-.heading-text::after {
-    right: -50%;
-}
