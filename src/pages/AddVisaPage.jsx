@@ -99,14 +99,14 @@ const AddVisaPage = () => {
                 <h2 className='text-2xl sm:text-3xl font-semibold font-poppins mx-4 sm:mx-8 text-center'>Add Visa Form</h2>
                 <form onSubmit={handleAddVisaForm} className='card-body px-4 sm:px-8 py-5'>
                     {/* row - 1 */}
-                    <div className='flex items-center gap-5'>
-                        <div className='form-control basis-1/2'>
+                    <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-5'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Country Image</span>
                             </label>
                             <input type='text' name='countryImage' placeholder='Country Image URL' className='input input-bordered' required />
                         </div>
-                        <div className='form-control basis-1/2'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Country Flag</span>
                             </label>
@@ -115,14 +115,14 @@ const AddVisaPage = () => {
                     </div>
 
                     {/* row - 2 */}
-                    <div className='flex items-center gap-5'>
-                        <div className='form-control basis-1/2'>
+                    <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-5'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Country Name</span>
                             </label>
                             <input type='text' name='countryName' placeholder='Country Name' className='input input-bordered' required />
                         </div>
-                        <div className='form-control basis-1/2'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Visa Type</span>
                             </label>
@@ -136,14 +136,14 @@ const AddVisaPage = () => {
                     </div>
 
                     {/* row - 3 */}
-                    <div className='flex items-center gap-5'>
-                        <div className='form-control basis-1/2'>
+                    <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-5'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Processing Time</span>
                             </label>
                             <input type='text' name='processingTime' placeholder='Processing Time' className='input input-bordered' required />
                         </div>
-                        <div className='form-control basis-1/2'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Age Restriction</span>
                             </label>
@@ -152,14 +152,14 @@ const AddVisaPage = () => {
                     </div>
 
                     {/* row - 4 */}
-                    <div className='flex items-center gap-5'>
-                        <div className='form-control basis-1/2'>
+                    <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-5'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Visa Fee</span>
                             </label>
                             <input type='number' min={0} name='visaFee' placeholder='Visa Fee' className='input input-bordered' required />
                         </div>
-                        <div className='form-control basis-1/2'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Application Method</span>
                             </label>
@@ -169,7 +169,7 @@ const AddVisaPage = () => {
 
                     {/* row - 5 */}
                     <div>
-                        <div className='form-control basis-1/2'>
+                        <div className='form-control w-full sm:basis-1/2'>
                             <label className='label'>
                                 <span className='label-text'>Validity</span>
                             </label>
@@ -178,7 +178,7 @@ const AddVisaPage = () => {
                     </div>
 
                     {/* row - 6 */}
-                    <div className='flex items-center gap-5'>
+                    <div className='flex flex-col sm:flex-row gap-2 sm:gap-5'>
                         <div className='form-control'>
                             <label className='label'>
                                 <span className='label-text'>Required Documents</span>

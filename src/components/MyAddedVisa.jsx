@@ -1,6 +1,6 @@
 
-const MyAddedVisa = ( { myAddedVisa, handleDeleteVisa, handleUpdateVisa } ) => {
-    const { _id, countryImage, countryFlag, countryName, processingTime, validity, applicationMethod, visaType, visaFee} = myAddedVisa;
+const MyAddedVisa = ({ myAddedVisa, handleDeleteVisa, handleShowModal }) => {
+    const { _id, countryImage, countryFlag, countryName, processingTime, validity, applicationMethod, visaType, visaFee, ageRestriction, description} = myAddedVisa;
 
     return (
         <div className='flex flex-col border-2 rounded-md hover:shadow-lg'>
@@ -21,7 +21,7 @@ const MyAddedVisa = ( { myAddedVisa, handleDeleteVisa, handleUpdateVisa } ) => {
                 </div>
                 <div className='mt-3 flex gap-5'>
                     <button onClick={() => handleDeleteVisa(_id)} className='w-full px-4 py-2 rounded-sm bg-red-500 text-[#F2F2F2] active:scale-95 font-semibold font-inter'>Delete Visa</button>
-                    <button onClick={() => handleUpdateVisa(_id)} className='w-full px-4 py-2 rounded-sm bg-[#003366] text-[#F2F2F2] active:scale-95 font-semibold font-inter'>Update Visa</button>
+                    <button onClick={() => {document.getElementById('update_modal').showModal(); handleShowModal(_id)}} className='w-full px-4 py-2 rounded-sm bg-[#003366] text-[#F2F2F2] active:scale-95 font-semibold font-inter'>Update Visa</button>
                 </div>
             </div>
         </div>

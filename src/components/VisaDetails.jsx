@@ -102,14 +102,14 @@ const VisaDetails = () => {
                     <h3 className="text-2xl text-center font-poppins font-semibold">Apply For The Visa!</h3>
                     <form onSubmit={handleApplyForm}>
                         {/* row 1 */}
-                        <div className='flex items-center gap-5'>
-                            <div className='form-control basis-1/2'>
+                        <div className='flex flex-col sm:flex-row items-center sm:gap-5'>
+                            <div className='form-control w-full sm:basis-1/2'>
                                 <label className='label'>
                                     <span className='label-text'>First Name</span>
                                 </label>
                                 <input type='text' name='firstName' placeholder='First Name' className='input input-bordered' required />
                             </div>
-                            <div className='form-control basis-1/2'>
+                            <div className='form-control w-full sm:basis-1/2'>
                                 <label className='label'>
                                     <span className='label-text'>Last Name</span>
                                 </label>
@@ -118,14 +118,14 @@ const VisaDetails = () => {
                         </div>
 
                         {/* row 2 */}
-                        <div className='flex items-center gap-5'>
-                            <div className='form-control basis-1/2'>
+                        <div className='flex flex-col sm:flex-row items-center sm:gap-5'>
+                            <div className='form-control w-full sm:basis-1/2'>
                                 <label className='label'>
                                     <span className='label-text'>Email</span>
                                 </label>
                                 <input type='email' name='email' defaultValue={user.email} placeholder='Email' className='input input-bordered' required />
                             </div>
-                            <div className='form-control basis-1/2'>
+                            <div className='form-control w-full sm:basis-1/2'>
                                 <label className='label'>
                                     <span className='label-text'>Visa Fee</span>
                                 </label>
@@ -135,7 +135,7 @@ const VisaDetails = () => {
                             
                         {/* row - 3 */}
                         <div>
-                            <div className='form-control mt-5'>
+                            <div className='form-control mt-3 sm:mt-5'>
                                 <input type='date' name='applyDate' className='input input-bordered' required/>
                             </div>
                         </div>
@@ -148,10 +148,10 @@ const VisaDetails = () => {
                         </div>
                     </form>
 
-                    <div className="modal-action" id="close_modal">
+                    <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
-                            <button ref={closeModalRef} className="btn" id="close_modal">Close</button>
+                            <button ref={closeModalRef} className="btn">Close</button>
                         </form>
                     </div>
                 </div>
