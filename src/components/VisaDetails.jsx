@@ -134,7 +134,7 @@ const VisaDetails = () => {
                         {/* row - 3 */}
                         <div>
                             <div className='form-control mt-5'>
-                                <input type='date' name='applyDate' className='input input-bordered' />
+                                <input type='date' name='applyDate' className='input input-bordered' required/>
                             </div>
                         </div>
 

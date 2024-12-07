@@ -1,5 +1,5 @@
 
-const MyAppliedVisa = ({ myAppliedVisa }) => {
+const MyAppliedVisa = ({ myAppliedVisa, handleCancelVisa }) => {
     const { _id, countryImage, countryFlag, countryName, processingTime, validity, applicationMethod, visaType, visaFee, applyDate, email, firstName, lastName } = myAppliedVisa;
 
     return (
@@ -23,7 +23,7 @@ const MyAppliedVisa = ({ myAppliedVisa }) => {
                     <p className='text-[#4A4A4A] font-inter'><span>Applied Date:</span> {applyDate}</p>
                 </div>
                 <div className='mt-3'>
-                    <button className='w-full px-4 sm:py-2 rounded-sm bg-[#003366] text-[#F2F2F2] active:scale-95 font-semibold font-inter'>Cancle Visa</button>
+                    <button onClick={() => handleCancelVisa(_id)} className='w-full px-4 sm:py-2 rounded-sm bg-[#003366] text-[#F2F2F2] active:scale-95 font-semibold font-inter'>Cancle Visa</button>
                 </div>
             </div>
         </div>
