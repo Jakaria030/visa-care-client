@@ -1,5 +1,5 @@
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
@@ -9,22 +9,21 @@ const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext);
     const [isHover, setIsHover] = useState(false);
     const {pathname, state} = useLocation();
+    const navigate = useNavigate();
 
     const links = <>
-        <NavLink to='/' className={`hover:text-[#FF6F3F] transition-colors duration-150 ${pathname === '/homePage' && 'text-[#FF6F3F]'}`}>Home</NavLink>
-        <NavLink to='/allVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>All visas</NavLink>
-        <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>Add visa</NavLink>
+        <NavLink to='/' className={`hover:text-[#FF6F3F] transition-colors duration-100 ${pathname === '/homePage' && 'text-[#FF6F3F]'}`}>Home</NavLink>
+        <NavLink to='/allVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>All visas</NavLink>
+        <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>Add visa</NavLink>
 
         {
-            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My added visas</NavLink>
-            <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-150'>My visa applications</NavLink></>
+            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My added visas</NavLink>
+            <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visa applications</NavLink></>
         }
 
-        
-        
         {
-            (!user) && <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Login</NavLink>
-            <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-150 sm:hidden'>Register</NavLink></div>
+            (!user) && <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Login</NavLink>
+            <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Register</NavLink></div>
         }
     </>;
 
@@ -77,6 +76,7 @@ const Navbar = () => {
                                 <p>{user?.displayName}</p>
                                 <button onClick={() => {
                                     signOutUser();
+                                    navigate('/');
                                     setIsHover(false);
                                 }} className='px-4 py-1 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Logout</button>
                             </div>
