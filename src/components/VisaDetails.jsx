@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -11,6 +11,7 @@ const VisaDetails = () => {
 
     const documents = Array.from(requiredDocuments);
     const closeModalRef = useRef(null);
+    const navigate = useNavigate();
 
     // apply form
     const handleApplyForm = (e) => {
@@ -40,10 +41,11 @@ const VisaDetails = () => {
                 form.reset();
                 Swal.fire({
                     icon: "success",
-                    title: "Great! Your application has been successfull.",
+                    title: "Great! Your application has been successful.",
                     showConfirmButton: false,
                     timer: 2000
                 });
+                navigate('/allVisaPage');
             }else{
                 Swal.fire({
                     icon: "error",

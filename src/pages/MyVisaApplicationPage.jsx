@@ -3,17 +3,20 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import NoDataFound from "../components/NoDataFound";
 import Swal from "sweetalert2";
+import LoadingPage from "./LoadingPage";
 
 const MyVisaApplicationPage = () => {
     const [myAppliedVisas, setMyAppliedVisa] = useState([]);
     // console.log(myAppliedVisas);
     const {user, root_dir} = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
 
     useEffect(()=> {
         fetch(`${root_dir}/applications/${user.email}`)
         .then(res => res.json())
         .then(data => {
-            setMyAppliedVisa(data)
+            setMyAppliedVisa(data);
+            setLoading(false);
         })
     },[])
 
@@ -48,7 +51,7 @@ const MyVisaApplicationPage = () => {
                     }else{
                         Swal.fire({
                             title: "Not Deleted!",
-                            text: "Your application has not deleted.",
+                            text: "Your application has not been deleted.",
                             icon: "error"
                         });
                     }
@@ -59,8 +62,8 @@ const MyVisaApplicationPage = () => {
 
     return (
         <section className='max-w-8xl mx-auto px-5'>
-            {
-                myAppliedVisas.length > 0 ? <div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+            {loading ? (<LoadingPage />) 
+            : myAppliedVisas.length > 0 ? (<div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                 {
                     myAppliedVisas.map(myAppliedVisa => <MyAppliedVisa
                         key={myAppliedVisa._id}
@@ -68,8 +71,7 @@ const MyVisaApplicationPage = () => {
                         handleCancelVisa={handleCancelVisa}
                     ></MyAppliedVisa>)
                 }
-                </div> : <NoDataFound></NoDataFound>
-            }
+                </div>) : (<NoDataFound />)}
         </section>
     );
 };
