@@ -11,8 +11,8 @@ import LoginPage from '../pages/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import VisaDetails from '../components/VisaDetails';
 
-const root_dir = 'http://localhost:5000';
-// const root_dir = 'https://visa-care-server.vercel.app';
+// const root_dir = 'http://localhost:5000';
+const root_dir = 'https://visa-care-server.vercel.app';
 
 const router = createBrowserRouter([
     {

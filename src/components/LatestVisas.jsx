@@ -48,7 +48,7 @@ const LatestVisas = () => {
                                 <p className={`${isDarkMode ? 'text-gray-400' : 'text-[#121212'} font-inter`}><span>Visa Fee:</span> ${latestVisa.visaFee}</p>
                             </div>
                             <div className='mt-3 flex gap-5'>
-                                <Link to={`/visaDetails/${latestVisa._id}`} className={`${isDarkMode ? 'bg-[#FF6F3F]/75' : 'bg-[003366]'} w-full text-center px-4 py-2 rounded-sm text-[#F2F2F2] active:scale-95 font-semibold font-inter`}>See Details</Link>
+                                <Link to={`/visaDetails/${latestVisa._id}`} className={`${isDarkMode ? 'bg-[#FF6F3F]/75' : 'bg-[#003366]'} w-full text-center px-4 py-2 rounded-sm text-[#F2F2F2] active:scale-95 font-semibold font-inter`}>See Details</Link>
                             </div>
                         </div>
                     </div>)
