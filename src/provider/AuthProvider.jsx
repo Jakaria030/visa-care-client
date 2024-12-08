@@ -6,6 +6,8 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
     const root_dir = 'http://localhost:5000';
+    // const root_dir = 'https://visa-care-server.vercel.app';
+
     
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
