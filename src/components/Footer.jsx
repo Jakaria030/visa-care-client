@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
 import { FaFacebook, FaGithub, FaInstagramSquare, FaTwitter } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Footer = () => {
+    const {isDarkMode} = useContext(AuthContext);
     return (
-        <section className='bg-[#003366] text-[#F2F2F2] py-10'>
+        <section className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'} text-[#F2F2F2] py-10`}>
             <footer className='max-w-8xl mx-auto px-5'>
                 {/* footer top */}
                 <div className='flex flex-col sm:flex-row justify-between gap-5'>

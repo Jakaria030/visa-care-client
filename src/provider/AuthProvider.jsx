@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
     const provider = new GoogleAuthProvider();
 
@@ -64,6 +65,8 @@ const AuthProvider = ({ children }) => {
         signInWithGoogle,
         loading,
         root_dir,
+        isDarkMode,
+        setIsDarkMode
     };
 
     return (

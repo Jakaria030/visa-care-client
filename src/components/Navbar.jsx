@@ -4,11 +4,12 @@ import logo from '../assets/logo.png';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import { CiDark, CiLight } from 'react-icons/ci';
 
 const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthContext);
+    const { user, signOutUser, isDarkMode, setIsDarkMode } = useContext(AuthContext);
     const [isHover, setIsHover] = useState(false);
-    const {pathname, state} = useLocation();
+    const { pathname, state } = useLocation();
     const navigate = useNavigate();
 
     const links = <>
@@ -18,24 +19,24 @@ const Navbar = () => {
 
         {
             user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My added visas</NavLink>
-            <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visa applications</NavLink></>
+                <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visa applications</NavLink></>
         }
 
         {
             (!user) && <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Login</NavLink>
-            <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Register</NavLink></div>
+                <NavLink to='/registerPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Register</NavLink></div>
         }
     </>;
 
     return (
-        <div className='bg-[#003366] text-[#F2F2F2] sticky top-0 z-50'>
+        <div className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'} text-[#F2F2F2] sticky top-0 z-50`}>
             <section className='max-w-8xl mx-auto px-5'>
                 <div className='navbar mx-0 px-0 py-5'>
                     {/* left part */}
                     <div className='navbar-start space-x-3 lg:space-x-0'>
                         <div className='dropdown'>
                             <div tabIndex={0} role='button' className='lg:hidden'>
-                                <GiHamburgerMenu className='text-2xl'/>
+                                <GiHamburgerMenu className='text-2xl' />
                             </div>
                             <ul
                                 tabIndex={0}
@@ -61,10 +62,21 @@ const Navbar = () => {
 
                     {/* right part */}
                     <div className='relative navbar-end'>
+                        {/* toggle dark/light mode */}
+                        <label className="swap swap-rotate mr-3 sm:mr-5">
+                            {/* this hidden checkbox controls the state */}
+                            <input type="checkbox" />
+
+                            {/* sun icon */}
+                            <CiDark onClick={() => setIsDarkMode(true)} className="swap-on h-10 w-10 fill-current"></CiDark>
+
+                            {/* moon icon */}
+                            <CiLight onClick={() => setIsDarkMode(false)} className="swap-off h-10 w-10 fill-current"></CiLight>
+                        </label>
 
                         {
                             user ? <div onMouseEnter={() => setIsHover(true)} className='size-10 sm:size-12 rounded-full ring-2 ring-[#FF6F3F] flex items-center justify-center cursor-pointer'>
-                                {user?.photoURL !== "undefined"  ? <img className='size-full rounded-full p-1' src={user?.photoURL} alt="User" /> : <FaUserCircle className='text-5xl p-1'/>}
+                                {user?.photoURL !== "undefined" ? <img className='size-full rounded-full p-1' src={user?.photoURL} alt="User" /> : <FaUserCircle className='text-5xl p-1' />}
                             </div> : <div className='sm:flex items-center justify-end gap-3 cursor-pointer hidden'>
                                 <NavLink to='/loginPage'><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Login</button></NavLink>
                                 <NavLink to='/registerPage' state={state}><button className='px-4 py-1 sm:py-2 rounded-sm bg-[#FF6F3F] text-[#F2F2F2] font-semibold hover:bg-[#FF6F3FDE] font-inter'>Register</button></NavLink>
