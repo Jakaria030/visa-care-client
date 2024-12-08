@@ -12,7 +12,7 @@ const AllVisaPage = () => {
     const handleSelectedVisaType = (e) => {
         let selectedValue = e.target.textContent;
 
-        if(selectedValue === 'All Visa'){
+        if (selectedValue === 'All Visa') {
             selectedValue = "";
         }
         fetch(`${root_dir}/visas?filterByVisaType=${selectedValue}`)
@@ -35,14 +35,16 @@ const AllVisaPage = () => {
 
     return (
         <section className="max-w-8xl mx-auto px-5">
-            <div className="dropdown mt-10">
-                <div tabIndex={0} role="button" className="px-4 py-2 rounded-md bg-[#003366] font-inter text-white">Filter By Visa Type</div>
-                <ul tabIndex={0} className="dropdown-content menu rounded-md bg-base-100 z-[1] w-52 p-2 shadow">
-                    <li><a onClick={handleSelectedVisaType}>All Visa</a></li>
-                    <li><a onClick={handleSelectedVisaType}>Tourist Visa</a></li>
-                    <li><a onClick={handleSelectedVisaType}>Student Visa</a></li>
-                    <li><a onClick={handleSelectedVisaType}>Official Visa</a></li>
-                </ul>
+            <div className="flex items-center justify-center mt-10">
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="px-4 py-2 rounded-md bg-[#003366] font-inter w-52 text-center text-white">Filter By Visa Type</div>
+                    <ul tabIndex={0} className="dropdown-content menu rounded-md bg-base-100 z-[1] w-52 p-2 shadow">
+                        <li><a onClick={handleSelectedVisaType}>All Visa</a></li>
+                        <li><a onClick={handleSelectedVisaType}>Tourist Visa</a></li>
+                        <li><a onClick={handleSelectedVisaType}>Student Visa</a></li>
+                        <li><a onClick={handleSelectedVisaType}>Official Visa</a></li>
+                    </ul>
+                </div>
             </div>
             {loading ? (
                 <LoadingPage />
