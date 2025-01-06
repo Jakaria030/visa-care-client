@@ -66,7 +66,7 @@ const Navbar = () => {
                     {/* right part */}
                     <div className='relative navbar-end'>
                         {/* toggle dark/light mode */}
-                        <label className="swap swap-rotate mr-3 sm:mr-5">
+                        <label className={`swap swap-rotate ${user && "mr-3"} sm:mr-5`}>
                             {/* this hidden checkbox controls the state */}
                             <input type="checkbox" />
 
