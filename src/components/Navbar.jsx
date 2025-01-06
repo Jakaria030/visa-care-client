@@ -18,9 +18,12 @@ const Navbar = () => {
         <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>Add visa</NavLink>
 
         {
-            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My added visas</NavLink>
-                <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visa applications</NavLink></>
+            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visas</NavLink>
+                <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My applications</NavLink></>
         }
+
+        <NavLink to='/faqs' className='hover:text-[#FF6F3F] transition-colors duration-100'>FAQs</NavLink>
+        <NavLink to='/contact' className='hover:text-[#FF6F3F] transition-colors duration-100'>Contact Us</NavLink>
 
         {
             (!user) && <div className='flex flex-col space-y-1'><NavLink to='/loginPage' className='hover:text-[#FF6F3F] transition-colors duration-100 sm:hidden'>Login</NavLink>

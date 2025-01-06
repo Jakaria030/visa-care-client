@@ -10,6 +10,8 @@ import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import VisaDetails from '../components/VisaDetails';
+import FAQsPage from '../pages/FAQsPage';
+import ContactPage from '../pages/ContactPage';
 
 // const root_dir = 'http://localhost:5000';
 const root_dir = 'https://visa-care-server.vercel.app';
@@ -63,6 +65,14 @@ const router = createBrowserRouter([
         {
           path: '/loginPage',
           element: <LoginPage></LoginPage>,
+        },
+        {
+          path: '/faqs',
+          element: <FAQsPage></FAQsPage>,
+        },
+        {
+          path: '/contact',
+          element: <ContactPage></ContactPage>,
         },
       ]
     },
