@@ -9,7 +9,7 @@ import { IoIosSearch } from "react-icons/io";
 const MyVisaApplicationPage = () => {
     const [myAppliedVisas, setMyAppliedVisa] = useState([]);
     // console.log(myAppliedVisas);
-    const { user, root_dir } = useContext(AuthContext);
+    const { user, root_dir, isDarkMode } = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -76,32 +76,34 @@ const MyVisaApplicationPage = () => {
     }
 
     return (
-        <section className='max-w-8xl mx-auto px-5'>
-            <div className="max-w-xs mx-auto mt-10">
-                <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-center gap-5">
-                    <label className="input input-bordered flex items-center gap-2">
-                        <input
-                            type="text"
-                            name="searchingCountryName"
-                            className="grow"
-                            placeholder="Search by country name"
-                        />
-                        <IoIosSearch className="text-2xl" />
-                    </label>
-                    <button type="submit" className="px-4 py-2 bg-[#003366] active:scale-95 rounded-lg text-white font-inter">Search</button>
-                </form>
-            </div>
-            {loading ? (<LoadingPage />)
-                : myAppliedVisas.length > 0 ? (<div className='my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
-                    {
-                        myAppliedVisas.map(myAppliedVisa => <MyAppliedVisa
-                            key={myAppliedVisa._id}
-                            myAppliedVisa={myAppliedVisa}
-                            handleCancelVisa={handleCancelVisa}
-                        ></MyAppliedVisa>)
-                    }
-                </div>) : (<NoDataFound />)}
-        </section>
+        <div className={`${isDarkMode ? 'bg-[#121212]' : 'bg-white'}`}>
+            <section className='max-w-8xl mx-auto px-5 py-8 md:py-16'>
+                <div className="max-w-xs mx-auto">
+                    <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-center gap-5">
+                        <label className="input input-bordered flex items-center gap-2">
+                            <input
+                                type="text"
+                                name="searchingCountryName"
+                                className="grow"
+                                placeholder="Search by country name"
+                            />
+                            <IoIosSearch className="text-2xl" />
+                        </label>
+                        <button type="submit" className={`px-4 py-2 active:scale-95 rounded-lg text-white font-inter ${isDarkMode ? 'bg-[#FF6F3F]': 'bg-[#003366]'}`}>Search</button>
+                    </form>
+                </div>
+                {loading ? (<LoadingPage />)
+                    : myAppliedVisas.length > 0 ? (<div className='my-8 md:my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+                        {
+                            myAppliedVisas.map(myAppliedVisa => <MyAppliedVisa
+                                key={myAppliedVisa._id}
+                                myAppliedVisa={myAppliedVisa}
+                                handleCancelVisa={handleCancelVisa}
+                            ></MyAppliedVisa>)
+                        }
+                    </div>) : (<NoDataFound />)}
+            </section>
+        </div>
     );
 };
 

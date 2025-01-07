@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
-import { FaFacebook, FaGithub, FaInstagramSquare, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
 
 const Footer = () => {
-    const {isDarkMode} = useContext(AuthContext);
+    const { isDarkMode } = useContext(AuthContext);
     return (
         <section className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'} text-[#F2F2F2] py-10`}>
             <footer className='max-w-8xl mx-auto px-5'>
@@ -30,9 +30,9 @@ const Footer = () => {
                         <h3 className='text-[#FF6F3F] font-bold text-lg font-poppins'>Quick Links</h3>
                         <ul className='mt-2 space-y-2 font-inter'>
                             <li><a href='/homePage' className='hover:text-[#FF6F3F]'>Home</a></li>
-                            <li><a href='#' className='hover:text-[#FF6F3F]'>Services</a></li>
-                            <li><a href='#' className='hover:text-[#FF6F3F]'>Contact Us</a></li>
-                            <li><a href='#' className='hover:text-[#FF6F3F]'>About</a></li>
+                            <li><a href='/allVisaPage' className='hover:text-[#FF6F3F]'>All Visa</a></li>
+                            <li><a href='/faqs' className='hover:text-[#FF6F3F]'>FAQs</a></li>
+                            <li><a href='/contact' className='hover:text-[#FF6F3F]'>Contact Us</a></li>
                         </ul>
                     </div>
 
@@ -40,12 +40,17 @@ const Footer = () => {
                     <div className="3/12">
                         <h3 className='text-[#FF6F3F] font-bold text-lg font-poppins'>Follow Us</h3>
                         <p className='mt-2 text-[#F2F2F2] font-inter'>Get the latest updates and offers:</p>
-                        
+
                         <div className='flex items-center gap-3 mt-5'>
-                            <FaFacebook className='text-2xl cursor-pointer'/>
-                            <FaTwitter className='text-2xl cursor-pointer'/>
-                            <FaInstagramSquare className='text-2xl cursor-pointer'/>
-                            <FaGithub className='text-2xl cursor-pointer'/>
+                            <Link to="https://www.facebook.com/gulam.jakaria.732339" target="_blank">
+                                <FaFacebook className='text-2xl' />
+                            </Link>
+                            <Link to="https://www.linkedin.com/in/gulam-jakaria-4a5086311/" target="_blank">
+                                <FaLinkedin className='text-2xl' />
+                            </Link>
+                            <Link to="https://github.com/Jakaria030" target="_blank">
+                                <FaGithub className='text-2xl' />
+                            </Link>
                         </div>
                     </div>
                 </div>

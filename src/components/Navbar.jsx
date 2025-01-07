@@ -15,10 +15,10 @@ const Navbar = () => {
     const links = <>
         <NavLink to='/' className={`hover:text-[#FF6F3F] transition-colors duration-100 ${pathname === '/homePage' && 'text-[#FF6F3F]'}`}>Home</NavLink>
         <NavLink to='/allVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>All visas</NavLink>
-        <NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>Add visa</NavLink>
 
         {
-            user && <><NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visas</NavLink>
+            user && <><NavLink to='/addVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>Add visa</NavLink>
+            <NavLink to='/myAddedVisaPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My visas</NavLink>
                 <NavLink to='/myVisaApplicationPage' className='hover:text-[#FF6F3F] transition-colors duration-100'>My applications</NavLink></>
         }
 
@@ -32,18 +32,18 @@ const Navbar = () => {
     </>;
 
     return (
-        <div className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'} text-[#F2F2F2] sticky top-0 z-50`}>
+        <div className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'} text-[#F2F2F2] sticky top-0 z-50 py-3`}>
             <section className='max-w-8xl mx-auto px-5'>
-                <div className='navbar mx-0 px-0 py-5'>
+                <div className='navbar mx-0 px-0'>
                     {/* left part */}
                     <div className='navbar-start space-x-3 lg:space-x-0'>
                         <div className='dropdown'>
-                            <div tabIndex={0} role='button' className='lg:hidden'>
+                            <div tabIndex={0} role='button' className={`lg:hidden`}>
                                 <GiHamburgerMenu className='text-2xl' />
                             </div>
                             <ul
                                 tabIndex={0}
-                                className='menu menu-md dropdown-content rounded-box z-[1] mt-5 w-60 space-y-1 px-3 py-4 shadow bg-[#003366] font-inter'>
+                                className={`menu menu-md dropdown-content rounded-box z-[1] mt-5 w-60 space-y-1 px-3 py-4 shadow font-inter  ${isDarkMode ? 'bg-gray-600' : 'bg-[#003366] '}`}>
                                 {links}
                             </ul>
                         </div>
@@ -87,7 +87,7 @@ const Navbar = () => {
                         }
 
                         {
-                            isHover && <div onMouseLeave={() => setIsHover(false)} className='absolute top-[70px] flex flex-col items-center gap-2 bg-[#003366] w-40 rounded-md p-2'>
+                            isHover && <div onMouseLeave={() => setIsHover(false)} className={`absolute top-[70px] flex flex-col items-center gap-2 ${isDarkMode ? "bg-[#1A1A1A]":"bg-[#003366]"} w-40 rounded-md p-2`}>
                                 <p>{user?.displayName}</p>
                                 <button onClick={() => {
                                     signOutUser();
