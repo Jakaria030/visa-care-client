@@ -6,7 +6,7 @@ const Statistics = () => {
     const {isDarkMode} = useContext(AuthContext);
 
     return (
-        <section className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]'}  text-[#F2F2F2]`}>
+        <section className={`${isDarkMode ? 'bg-[#1A1A1A]' : 'bg-[#003366]/90'}  text-[#F2F2F2]`}>
                 <div className="max-w-8xl mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 py-10 my-10">
             <Bounce cascade>
                     <div className='flex flex-col items-center justify-center py-5 sm:py-10 md:py-16 lg:py-20'>
