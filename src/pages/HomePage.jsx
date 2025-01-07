@@ -4,6 +4,7 @@ import LatestVisas from "../components/LatestVisas";
 import OurOfferings from "../components/Ourofferings";
 import Statistics from "../components/Statistics";
 import { AuthContext } from "../provider/AuthProvider";
+import OurTeam from "../components/OurTeam";
 
 const HomePage = () => {
     const {isDarkMode} = useContext(AuthContext);
@@ -14,6 +15,7 @@ const HomePage = () => {
             <LatestVisas></LatestVisas>
             <Statistics></Statistics>
             <OurOfferings></OurOfferings>
+            <OurTeam></OurTeam>
         </div>
     );
 };
