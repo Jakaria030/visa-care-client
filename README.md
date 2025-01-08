@@ -4,6 +4,9 @@
 ## Purpose
 Visa Care is a web-based platform designed to streamline the visa application process, making it easy for users to check visa requirements and add visa details. This system offers a user-friendly interface to simplify complex visa procedures. The project demonstrates practical solutions for managing visa-related information efficiently.
 
+## Preview
+![Project Image](public/visa-care.png)
+
 ## Live URL
 [Visit Visa Care Website](https://visa-care.web.app/)
 
@@ -45,13 +48,25 @@ The following npm packages were used in the project:
 
 
 
+## Getting Started
+Follow these steps to set up and run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/programming-hero-web-course2/b10-a10-client-side-Jakaria030.git
-2. Install dependencies:
+   git clone https://github.com/Jakaria030/visa-care-client.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd visa-care-client
+   ```
+3. Install dependencies:
    ```bash
    npm install
-3. Run the development server:
-    ```bash
-    npm run dev
+   ```
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+5. You have to setup some other things like firebase as per your need. Also you have to setup backend server. <br>
+   Follow my server sidde Github reposity docs.
+[Visit](https://github.com/Jakaria030/visa-care-server)
