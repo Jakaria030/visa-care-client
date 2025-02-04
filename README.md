@@ -4,11 +4,12 @@
 ## Purpose
 Visa Care is a web-based platform designed to streamline the visa application process, making it easy for users to check visa requirements and add visa details. This system offers a user-friendly interface to simplify complex visa procedures. The project demonstrates practical solutions for managing visa-related information efficiently.
 
+## Live URL
+[Visit Visa Care Website](https://visa-care.web.app/)
+
 ## Preview
 ![Project Image](public/visa-care.png)
 
-## Live URL
-[Visit Visa Care Website](https://visa-care.web.app/)
 
 ## Key Features
 **🌍 Visa Requirement Information** <br>
@@ -47,7 +48,6 @@ The following npm packages were used in the project:
 - [`react-awesome-reveal`](https://www.npmjs.com/package/react-awesome-reveal): A React component library for adding reveal animations to elements.
 
 
-
 ## Getting Started
 Follow these steps to set up and run the project locally:
 
@@ -68,5 +68,5 @@ Follow these steps to set up and run the project locally:
    npm run dev
    ```
 5. You have to setup some other things like firebase as per your need. Also you have to setup backend server. <br>
-   Follow my server sidde Github reposity docs.
+   Follow my server side github repository docs.
 [Visit](https://github.com/Jakaria030/visa-care-server)
